@@ -26,6 +26,4 @@ export class AppComponent implements OnInit {
     timeout: 0
   });
 
-  ngOnInit() {
-  }
 }
