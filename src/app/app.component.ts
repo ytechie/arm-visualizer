@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   constructor(private templateService: TemplateService) {
     window.addEventListener('message', event => {
-      this.templateService.loadTemplate(event.data);
+      this.templateService.loadTemplate(event.data.template);
       this.isRunningInVsCode = true;
     });
   }
