@@ -1,6 +1,5 @@
 <div class="app-container">
-  <menu-bar></menu-bar>
-  <sidebar></sidebar>
+  <menu-bar ng-if="!isRunningInVsCode"></menu-bar>
+  <sidebar ng-if="!isRunningInVsCode"></sidebar>
   <workbench></workbench>
-  <toaster-container [toasterconfig]="toasterconfig"></toaster-container>
 </div>

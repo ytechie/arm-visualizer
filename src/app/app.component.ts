@@ -20,10 +20,12 @@ declare const __moduleName: string;
   providers: [ToasterService]
 })
 export class AppComponent implements OnInit {
-  private toasterconfig: ToasterConfig = new ToasterConfig({
-    positionClass: 'toast-top-full-width',
-    newestOnTop: true,
-    timeout: 0
-  });
+  private isRunningInVsCode = false;
 
+  constructor(private templateService: TemplateService) {
+    window.addEventListener('message', event => {
+      this.templateService.loadTemplate(event.data);
+      this.isRunningInVsCode = true;
+    });
+  }
 }
