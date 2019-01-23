@@ -20,6 +20,10 @@ export class DesignerComponent implements OnInit {
     private templateService: TemplateService) {}
 
   ngOnInit() {
+    window.addEventListener('message', event => {
+      this.templateService.loadTemplate(event.data);
+    });
+
     let loadIndex = this.router.url.indexOf('?load=');
     if (loadIndex > -1) {
       let url: string = decodeURIComponent(this.router.url.substr(loadIndex + 6));

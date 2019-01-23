@@ -10,11 +10,11 @@ declare const __moduleName: string;
 })
 export class FeedbackToastComponent {
   onNeverButtonClick() {
-    localStorage.setItem('feedback', 'never');
+    // localStorage.setItem('feedback', 'never');
   }
 
   onTakeSurveyButtonClick() {
-    localStorage.setItem('feedback', 'took');
-    window.open('http://www.instant.ly/s/DDMwi');
+    // localStorage.setItem('feedback', 'took');
+    // window.open('http://www.instant.ly/s/DDMwi');
   }
 }

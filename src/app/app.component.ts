@@ -26,17 +26,6 @@ export class AppComponent implements OnInit {
     timeout: 0
   });
 
-  constructor(private toasterService: ToasterService, private templateService: TemplateService) { }
-
   ngOnInit() {
-    if (!localStorage.getItem('feedback')) {
-      setTimeout(() => {
-        this.toasterService.pop(FEEDBACK_TOAST);
-      }, 20000);
-    }
-
-    window.addEventListener('message', event => {
-      this.templateService.loadTemplate(event.data);
-    });
   }
 }
