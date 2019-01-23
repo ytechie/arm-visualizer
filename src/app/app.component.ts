@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster/angular2-toaster';
 
-import { FEEDBACK_TOAST } from './shared/index';
+import { FEEDBACK_TOAST, TemplateService } from './shared/index';
 import { MenuBarComponent, SidebarComponent, WorkbenchComponent } from './shared/index';
 
 declare const __moduleName: string;
@@ -26,14 +26,17 @@ export class AppComponent implements OnInit {
     timeout: 0
   });
 
-  constructor(private toasterService: ToasterService) { }
+  constructor(private toasterService: ToasterService, private templateService: TemplateService) { }
 
   ngOnInit() {
-    console.log(localStorage.getItem('feedback'));
     if (!localStorage.getItem('feedback')) {
       setTimeout(() => {
         this.toasterService.pop(FEEDBACK_TOAST);
       }, 20000);
     }
+
+    window.addEventListener('message', event => {
+      this.templateService.loadTemplate(event.data);
+    });
   }
 }
