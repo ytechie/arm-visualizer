@@ -1,5 +1,5 @@
 <div class="app-container">
-  <menu-bar ng-if="!isRunningInVsCode"></menu-bar>
-  <sidebar ng-if="!isRunningInVsCode"></sidebar>
+  <menu-bar *ngIf="!isRunningInVsCode"></menu-bar>
+  <sidebar *ngIf="!isRunningInVsCode"></sidebar>
   <workbench></workbench>
 </div>
