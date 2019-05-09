@@ -60,7 +60,7 @@ export class TemplateService {
     let expressionErrors = this.engine.errorManager.expressionErrors;
 
     if (templateErrors.length > 0 || Object.keys(expressionErrors).length > 0) {
-      //console.clear();
+      // console.clear();
     }
 
     if (templateErrors.length > 0) {

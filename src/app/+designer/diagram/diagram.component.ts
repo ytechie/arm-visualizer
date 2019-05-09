@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { DiagramNode, DiagramService } from './shared/index';
 import { TemplateService } from '../../shared/index';
+import { IS_VS_EMBED } from '../../app.component';
 
 declare const __moduleName: string;
 declare const cytoscape: any;
@@ -88,7 +89,9 @@ export class DiagramComponent implements OnInit, OnDestroy {
 
     });
 
-    this.cy.on('tap', 'node', event => this.onNodeTap(event));
+    if (!IS_VS_EMBED) {
+      this.cy.on('tap', 'node', event => this.onNodeTap(event));
+    }
     this.cy.on('mouseover', 'node', event => this.onNodeMouseover(event));
     this.cy.on('mouseout', 'node', event => this.onNodeMouseout(event));
 

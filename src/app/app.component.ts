@@ -7,6 +7,8 @@ import { MenuBarComponent, SidebarComponent, WorkbenchComponent } from './shared
 
 declare const __moduleName: string;
 
+export let IS_VS_EMBED = false;
+
 @Component({
   moduleId: __moduleName,
   selector: 'app',
@@ -24,8 +26,8 @@ export class AppComponent implements OnInit {
   private isRunningInVsCode = false;
 
   constructor(private router: Router, private templateService: TemplateService) {
-    let isVsEmbed = window.location.href.indexOf('vsembed') >= 0;
-    if(isVsEmbed) {
+    IS_VS_EMBED = window.location.href.indexOf('vsembed') >= 0;
+    if (IS_VS_EMBED) {
       console.log('Running in embedded mode. URL: ' + window.location.href);
 
       this.isRunningInVsCode = true;
