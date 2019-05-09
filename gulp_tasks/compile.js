@@ -24,17 +24,15 @@ function compile() {
     .pipe(sourcemaps.init())
     .pipe(uglify({preserveComments: uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
     .pipe(rev())
-    .pipe(sourcemaps.write('maps'))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
-    .pipe(sourcemaps.init())
     .pipe(cssnano())
     .pipe(rev())
-    .pipe(sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
     .pipe(revReplace())
     .pipe(htmlFilter)
     .pipe(htmlmin())
     .pipe(htmlFilter.restore)
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(conf.path.dist()));
 }
