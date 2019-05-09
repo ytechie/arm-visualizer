@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router, private templateService: TemplateService) {
     let isVsEmbed = window.location.href.indexOf('vsembed') >= 0;
-    console.log(window.location.href);
-    console.log(isVsEmbed);
-    if (isVsEmbed) {
+    if(isVsEmbed) {
+      console.log('Running in embedded mode. URL: ' + window.location.href);
+
       this.isRunningInVsCode = true;
       this.templateService.loadTemplate(
         `{
@@ -42,6 +42,8 @@ export class AppComponent implements OnInit {
     }
 
     window.addEventListener('message', event => {
+      console.log('Designer received template. Size: ' + event.data.template);
+      console.log(event);
       this.templateService.loadTemplate(event.data.template);
     });
   }
